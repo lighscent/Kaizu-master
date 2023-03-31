@@ -1,10 +1,8 @@
 const { EmbedBuilder } = require("discord.js");
-const { color } = require("../data/embed");
 const moment = require("moment");
-const { joinChannelId, joinLogsChannelId, verificationChannelId } = require("../data/channels");
 const db = require("../db");
 const crypto = require('crypto');
-const { arrivant } = require("../data/roles");
+const { data } = require("../data/data");
 
 
 module.exports = {
@@ -28,11 +26,11 @@ module.exports = {
         const verificationEmbed = new EmbedBuilder()
             .setTitle('Vérification du compte')
             .setDescription(`Pour accéder au reste du serveur, merci de vérifier ton compte en envoyant le message suivant:\n\n\`\`\`${verificationCode}\`\`\``)
-            .setColor(color)
+            .setColor(data.colors.base)
             .setTimestamp()
             .setFooter({ text: `Si le code ne fonctionne pas, mentionne un staff` })
 
-        const verificationChannel = member.guild.channels.cache.find(c => c.id === verificationChannelId);
+        const verificationChannel = member.guild.channels.cache.find(c => c.id === data.channels.verificationId);
         verificationChannel.send({ content: `<@${member.id}>`, embeds: [verificationEmbed] });
 
 
@@ -40,7 +38,7 @@ module.exports = {
         const filter = m => m.author.id === member.id && m.content.toUpperCase() === verificationCode.toUpperCase();
         verificationChannel.awaitMessages({ filter, max: 1, time: 60000, errors: ['time'] })
             .then(async collected => {
-                const memberRole = member.guild.roles.cache.find(r => r.id === arrivant);
+                const memberRole = member.guild.roles.cache.find(r => r.id === data.roles.memberId);
                 member.roles.add(memberRole);
                 const messages = await verificationChannel.messages.fetch();
                 const botMessage = messages.find(m => m.content.includes(member.id));
@@ -55,13 +53,13 @@ module.exports = {
 
 
 
-        const joinChannel = member.guild.channels.cache.find(c => c.id === joinChannelId);
-        const joinLogsChannel = member.guild.channels.cache.find(c => c.id === joinLogsChannelId);
+        const joinChannel = member.guild.channels.cache.find(c => c.id === data.channels.joinId);
+        const joinLogsChannel = member.guild.channels.cache.find(c => c.id === data.channels.joinLogsId);
 
         const joinEmbed = new EmbedBuilder()
             .setTitle('🛬 Un nouvel utilisateur est arrivé !')
             .setDescription(`Bienvenue à toi ${member} parmis nous !\nNous sommes désormais **${member.guild.memberCount} Membres**!`)
-            .setColor(color)
+            .setColor(data.colors.base)
             .setTimestamp()
             .setFooter({ text: `ID: ${member.id}` })
             .setAuthor({ name: member.user.tag, iconURL: member.user.displayAvatarURL() });
@@ -76,7 +74,7 @@ module.exports = {
                 { name: 'Compte rejoint le', value: `${member.joinedAt.toLocaleString()} `, inline: true },
                 { name: 'Roles', value: `${member.roles.cache.map(r => r).join(' ')}`, inline: true },
             )
-            .setColor(color)
+            .setColor(data.colors.base)
             .setTimestamp()
             .setFooter({ text: `ID: ${member.id}` })
 

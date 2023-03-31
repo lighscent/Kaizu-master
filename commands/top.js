@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('discord.js');
-const { colorEco } = require('../data/embed');
+const { data } = require('../data/data');
 
 
 module.exports = {

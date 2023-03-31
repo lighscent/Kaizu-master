@@ -1,6 +1,5 @@
 {
   "name": "maskfr-bot",
-  "version": "1.0.0",
   "description": "Bot Officiel de MaskFR",
   "main": "index.js",
   "scripts": {

@@ -1,14 +1,11 @@
-const { ActivityType, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
-const { color } = require('../data/embed');
-const { maskfr } = require('../data/serveurs');
-const { prefix, salut } = require('../data/words');
+const { data } = require('../data/data');
 const db = require('../db');
 
 module.exports = {
     name: 'messageCreate',
     async execute(message) {
         if (message.author.bot) return;
-        if (message.guild.id !== maskfr) return;
+        if (message.guild.id !== data.server.maskfr) return;
         if (message.channel.type === 'DM') return;
 
 
@@ -31,12 +28,13 @@ module.exports = {
             }
         });
 
-
+        const salut = data.words.salut;
         // add reaction to the message
         if (salut.includes(message.content.toLowerCase())) {
             message.react('👋');
         }
 
+        const prefix = data.prefix;
 
         if (message.content.length <= 3) return;
         if (prefix.includes(message.content.split("")[0])) return;

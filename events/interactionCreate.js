@@ -1,7 +1,6 @@
 const { InteractionType, EmbedBuilder } = require('discord.js');
 const { readdirSync } = require('fs');
-const { annonces, minecraft, giveaways } = require('../data/roles');
-const { color } = require('../data/embed');
+const { data } = require('../data/data');
 const db = require('../db');
 
 module.exports = {
@@ -15,7 +14,7 @@ module.exports = {
             if (!row) {
                 db.run(`INSERT INTO ecoUser (idUser, moneyUser, cooldownDaily) VALUES ('${interaction.user.id}', 0, 0)`);
                 const embed = new EmbedBuilder()
-                    .setColor(color)
+                    .setColor(data.colors.base)
                     .setDescription(`Création de votre profil en cours...`)
                 interaction.reply({ embeds: [embed], ephemeral: true });
             }
@@ -36,47 +35,6 @@ module.exports = {
                     command.run(client, interaction)
                 }
             })
-        }
-
-
-
-        const embed = new EmbedBuilder()
-            .setColor(color)
-        if (interaction.isButton()) {
-            if (interaction.user.bot) return;
-            if (interaction.customId == 'minecraft') {
-                if (interaction.member.roles.cache.has(minecraft)) {
-                    interaction.member.roles.remove(minecraft);
-                    embed.setDescription(`Vous avez bien été retiré du rôle **Minecraft** !`);
-                    interaction.reply({ embeds: [embed], ephemeral: true });
-                } else {
-                    interaction.member.roles.add(minecraft);
-                    embed.setDescription(`Vous avez bien été ajouté au rôle **Minecraft** !`);
-                    interaction.reply({ embeds: [embed], ephemeral: true });
-                }
-            }
-            if (interaction.customId == 'annonces') {
-                if (interaction.member.roles.cache.has(annonces)) {
-                    interaction.member.roles.remove(annonces);
-                    embed.setDescription(`Vous avez bien été retiré du rôle **Annonces** !`);
-                    interaction.reply({ embeds: [embed], ephemeral: true });
-                } else {
-                    interaction.member.roles.add(annonces);
-                    embed.setDescription(`Vous avez bien été ajouté au rôle **Annonces** !`);
-                    interaction.reply({ embeds: [embed], ephemeral: true });
-                }
-            }
-            if (interaction.customId == 'giveaways') {
-                if (interaction.member.roles.cache.has(giveaways)) {
-                    interaction.member.roles.remove(giveaways);
-                    embed.setDescription(`Vous avez bien été retiré du rôle **Giveaways** !`);
-                    interaction.reply({ embeds: [embed], ephemeral: true });
-                } else {
-                    interaction.member.roles.add(giveaways);
-                    embed.setDescription(`Vous avez bien été ajouté au rôle **Giveaways** !`);
-                    interaction.reply({ embeds: [embed], ephemeral: true });
-                }
-            }
         }
     }
 }

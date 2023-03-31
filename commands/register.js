@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('discord.js');
 const db = require('../db')
-const { color } = require('../data/embed')
+const { data } = require('../data/data')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -18,21 +18,21 @@ module.exports = {
 
         if (pseudo.length < 3) {
             const embed = new EmbedBuilder()
-                .setColor(color)
+                .setColor(data.colors.base)
                 .setDescription(`Votre pseudo doit contenir au moins 3 caractères !`)
             return interaction.reply({ embeds: [embed], ephemeral: true });
         }
 
         if (password.length > 16) {
             const embed = new EmbedBuilder()
-                .setColor(color)
+                .setColor(data.colors.base)
                 .setDescription(`Votre mot de passe doit contenir moins de 16 caractères !`)
             return interaction.reply({ embeds: [embed], ephemeral: true });
         }
 
         if (password != confirmpassword) {
             const embed = new EmbedBuilder()
-                .setColor(color)
+                .setColor(data.colors.base)
                 .setDescription(`Les mots de passe ne correspondent pas !`)
             return interaction.reply({ embeds: [embed], ephemeral: true });
         }
@@ -43,12 +43,12 @@ module.exports = {
             if (!row) {
                 db.run(`INSERT INTO accountUser (idAccountUser, pseudoUser, passwordUser) VALUES ('${interaction.user.id}', '${pseudo}', '${password}')`);
                 const embed = new EmbedBuilder()
-                    .setColor(color)
+                    .setColor(data.colors.base)
                     .setDescription(`Votre compte a bien été créé !`)
                 interaction.reply({ embeds: [embed] });
             } else {
                 const embed = new EmbedBuilder()
-                    .setColor(color)
+                    .setColor(data.colors.base)
                     .setDescription(`Vous avez déjà un compte !`)
                 interaction.reply({ embeds: [embed] });
             }

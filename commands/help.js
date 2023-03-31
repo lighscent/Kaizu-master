@@ -1,7 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
-const { color, colorEco, colorMod } = require('../data/embed');
-const { mod, eco, devonly, main } = require('../data/emojis');
+const { data } = require('../data/data');
 
 
 module.exports = {
@@ -15,9 +14,9 @@ module.exports = {
             .setAuthor({ name: `Help - MaskFR | Official` })
             .setDescription(`Pour avoir les commandes d'un module spécifique, 
             Appuyez sur le bouton correspondant au module.\n
-            ${mod} - Commandes de Modération
-            ${eco} - Commandes Economie`)
-            .setColor(color)
+            ${data.emojis.mod} - Commandes de Modération
+            ${data.emojis.eco} - Commandes Economie`)
+            .setColor(data.colors.base)
             .setImage('https://imgur.com/lJtVZYu.png')
             .setTimestamp()
             .setFooter({ text: `MaskFR | Official` })
@@ -32,7 +31,7 @@ module.exports = {
                 { name: `/banid [id] (reason)`, value: `Ban l'utilisateur par son ID`, inline: true },
                 { name: `/unban [id] (reason)`, value: `Unban l'utilisateur`, inline: true },
             )
-            .setColor(colorMod)
+            .setColor(data.colors.mod)
             .setImage('https://imgur.com/RC0VRdp.png')
             .setTimestamp()
             .setFooter({ text: `MaskFR | Official` })
@@ -52,10 +51,10 @@ module.exports = {
                 { name: `/buy [item]`, value: `Achetez un item`, inline: true },
                 { name: `/sell [item]`, value: `Vendez un item`, inline: true },
                 { name: `/top`, value: `Affiche le classement des joueurs`, inline: true },
-                { name: `/give [user] [amount] ${devonly}`, value: `Donnez de l'argent à un utilisateur`, inline: true },
-                { name: `/remove [user] [amount] ${devonly}`, value: `Retirez de l'argent à un utilisateur`, inline: true },
+                { name: `/give [user] [amount]`, value: `Donnez de l'argent à un utilisateur`, inline: true },
+                { name: `/remove [user] [amount]`, value: `Retirez de l'argent à un utilisateur`, inline: true },
             )
-            .setColor(colorEco)
+            .setColor(data.colors.eco)
             .setImage('https://imgur.com/KfWq7Bp.png')
             .setTimestamp()
             .setFooter({ text: `MaskFR | Official` })
@@ -68,13 +67,11 @@ module.exports = {
         const buttonMod = new ButtonBuilder()
             .setCustomId('mod')
             .setStyle(ButtonStyle.Secondary)
-            .setLabel('Modération')
-        //.setEmoji(mod)
+            .setEmoji(data.emojis.mod)
         const buttonEco = new ButtonBuilder()
             .setCustomId('eco')
             .setStyle(ButtonStyle.Secondary)
-            .setLabel('Economie')
-        //.setEmoji(eco)
+            .setEmoji(data.emojis.eco)
 
         const mainActionRow = new ActionRowBuilder()
             .addComponents(buttonMod, buttonEco)

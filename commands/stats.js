@@ -1,6 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { color } = require("../data/embed");
+const { data } = require("../data/data");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -22,7 +22,7 @@ module.exports = {
                 { name: `Propriétaire du serveur 👑`, value: `<@${interaction.guild.ownerId}>` },
                 { name: `ID du serveur 🆔`, value: `\`${interaction.guild.id}\`` },
                 { name: `Date de création 📅`, value: `\`${interaction.guild.createdAt.toLocaleDateString()} - ${interaction.guild.createdAt.toLocaleTimeString()}\`` })
-            .setColor(color)
+            .setColor(data.colors.base)
             .setImage({ url: interaction.guild.bannerURL({ format: "png", size: 1024 }) })
             .setThumbnail({ url: interaction.guild.iconURL({ size: 1024 }) })
             .setTimestamp()

@@ -1,7 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('discord.js');
-const { colorEco } = require('../data/embed');
-const { shopChannelId } = require('../data/channels');
+const { data } = require('../data/data');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -15,7 +14,7 @@ module.exports = {
             .addFields(
                 { name: `Key Basic x1`, value: `500$` }
                 )
-            .setColor(colorEco)
+            .setColor(data.colors.eco)
             .setTimestamp()
             .setFooter({ text: `MaskFR | Official` })
 

@@ -1,6 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { colorEco } = require('../data/embed');
+const { data } = require("../data/data");
 const db = require('../db');
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
             if (err) throw err;
             if (row) {
                 const embed = new EmbedBuilder()
-                    .setColor(colorEco)
+                    .setColor(data.colors.eco)
                     .setDescription(`Vous avez **${row.moneyUser}**`)
                 interaction.reply({ embeds: [embed] });
             }

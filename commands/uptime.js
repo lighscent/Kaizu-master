@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const { EmbedBuilder } = require('discord.js')
-const { color } = require('../data/embed')
+const { data } = require('../data/data')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -18,7 +18,7 @@ module.exports = {
             const embed = new EmbedBuilder()
                 .setTitle('Uptime')
                 .setDescription(`Le bot est en ligne depuis ${days} jours, ${hours} heures, ${minutes} minutes et ${seconds} secondes`)
-                .setColor(color)
+                .setColor(data.colors.base)
                 .setTimestamp()
                 
             interaction.reply({ embeds: [embed] })

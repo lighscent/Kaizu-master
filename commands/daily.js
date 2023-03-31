@@ -1,6 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const data = require("../data/data");
+const { data } = require("../data/data");
 const randomDaily = require("../data/random");
 const db = require('../db');
 const moment = require('moment');

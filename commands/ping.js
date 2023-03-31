@@ -1,6 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { color } = require("../data/embed");
+const { data } = require("../data/data");
 
 module.exports = { 
     data: new SlashCommandBuilder()
@@ -15,7 +15,7 @@ module.exports = {
                 { name: `Latence du bot 🤖`, value: `\`${client.ws.ping}ms\``},
                 { name: `Latence de l'API 🛰️`, value: `\`${interaction.createdTimestamp - Date.now()}ms\``}
             )
-            .setColor(color)
+            .setColor(data.colors.base)
             .setTimestamp()
             .setFooter({ text: `${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 1024})})
         interaction.reply({ embeds: [embed] })

@@ -1,7 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { PermissionFlagsBits, EmbedBuilder } = require('discord.js');
-const { colorMod } = require('../data/embed');
-const { logsMod } = require('../data/channels');
+const { data } = require('../data/data');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -14,7 +13,7 @@ module.exports = {
         const id = interaction.options.getString('id');
         const embed = new EmbedBuilder()
             .setTitle('Modération - Unban')
-            .setColor(colorMod)
+            .setColor(data.colors.mod)
             .setTimestamp()
             .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL() })
 
@@ -23,7 +22,7 @@ module.exports = {
                 .then(() => {
                     interaction.reply({ content: `L'utilisateur <@${id}> a été unban avec succès !` });
                     embed.setDescription(`**Utilisateur unban:** <@${id}>\n**Modérateur:** <@${interaction.user.id}> (${interaction.user.id})`)
-                    client.channels.cache.get(logsMod).send({ embeds: [embed] });
+                    client.channels.cache.get(data.channels.logsId).send({ embeds: [embed] });
                 })
                 .catch(err => {
                     interaction.reply({ content: 'Je n\'ai pas pu unban cet utilisateur', ephemeral: true });
