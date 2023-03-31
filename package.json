@@ -1,0 +1,23 @@
+{
+  "name": "maskfr-bot",
+  "version": "1.0.0",
+  "description": "Bot Officiel de MaskFR",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "!\"Its_Azukio#8075",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/rest": "^1.5.0",
+    "crypto": "^1.0.1",
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "fs": "^0.0.1-security",
+    "moment": "^2.29.4",
+    "node-fetch": "^3.3.1",
+    "nodemon": "^2.0.21",
+    "random-number": "^0.0.9",
+    "sqlite3": "^5.1.6"
+  }
+}
