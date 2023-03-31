@@ -24,7 +24,7 @@ module.exports = {
             ${data.emojis.on} Mise en place du repo github pour les issues et les releases
             ${data.emojis.idle} Optimisation des datas visant à réduire la consommation de RAM et de CPU
             
-            **v2.0.1** - *31 Mars 2023 11h40*
+            **v2.0.1** - *31 Mars 2023 17h10*
             ${data.emojis.on} Ajout \`/issue\` pour signaler un bug
             ${data.emojis.on} Ajout \`/release\` pour afficher la dernière release du bot
             ${data.emojis.on} Ajout \`/version\` pour afficher les ajouts des versions
