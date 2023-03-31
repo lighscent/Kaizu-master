@@ -34,10 +34,8 @@ module.exports = {
             message.react('👋');
         }
 
-        const prefix = data.prefix;
 
         if (message.content.length <= 3) return;
-        if (prefix.includes(message.content.split("")[0])) return;
 
         // add 1 the moneyUser of the user
         db.get(`SELECT * FROM ecoUser WHERE idUser = '${message.author.id}'`, async (err, row) => {

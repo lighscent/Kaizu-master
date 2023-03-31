@@ -4,4 +4,4 @@ package-lock.json
 .gitignore
 .git
 .gitatributes
-```
+db/db.sqlite

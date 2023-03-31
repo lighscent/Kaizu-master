@@ -17,6 +17,9 @@ module.exports = {
             mod: 'ff0000'
         },
         emojis: {
+            on: `<:on:1091375994482471085>`,
+            dnd: `<:dnd:1091375996063723530>`,
+            idle: `<:idle:1091375991420633138>`,
             yes: `<:yes:1088550268154691624>`,
             no: `<:no:1088550265566802140>`,
             one: `<:1_:1088557309711626383>`,
@@ -35,7 +38,6 @@ module.exports = {
             arrivant: `1054039253069336696`,
         },
         words: {
-            prefix: ['!', '?', '.', ',', ';', ':', '/', '*', '+'],
             salut: ['salut', 'slt', 'bonjour', 'bjr', 'yo', 'coucou', 'cc', 'hello', 'hey', 'hi', 'bonsoir', 'bsr'],
         },
         server: {

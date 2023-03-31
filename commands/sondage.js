@@ -46,8 +46,8 @@ module.exports = {
 
         if (subcommand === 'oui-non') {
             embed.addFields(
-                { name: `Pour/Oui`, value: `${yes}`, inline: true },
-                { name: `Contre/Non`, value: `${no}`, inline: true }
+                { name: `Oui`, value: `${yes}`, inline: true },
+                { name: `Non`, value: `${no}`, inline: true }
             );
             const messag = await interaction.reply({ embeds: [embed], fetchReply: true });
             Promise.all([
