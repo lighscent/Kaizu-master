@@ -8,7 +8,7 @@
   "author": "!\"Its_Azukio#8075",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/rest": "^1.5.0",
+    "@discordjs/rest": "^1.7.1",
     "crypto": "^1.0.1",
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
