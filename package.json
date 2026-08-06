@@ -11,7 +11,7 @@
     "@discordjs/rest": "^1.5.0",
     "crypto": "^1.0.1",
     "discord.js": "^14.7.1",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.4.7",
     "fs": "^0.0.1-security",
     "moment": "^2.29.4",
     "node-fetch": "^3.3.1",
